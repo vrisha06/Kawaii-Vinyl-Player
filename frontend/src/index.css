@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kawaii-pink: #F8DCE3;
+  --color-kawaii-pink-dark: #EBC0CF;
+  --color-kawaii-accent: #D989A8;
+  --color-kawaii-mauve: #8A5A6B;
+  --color-kawaii-text: #5A3946;
+  --color-kawaii-cream: #FFF4F7;
+  
+  --font-pixel: "Pixelify Sans", sans-serif;
+  --font-mono-pixel: "VT323", monospace;
+  --font-tiny-pixel: "Press Start 2P", system-ui;
+
+  --shadow-pixel: 4px 4px 0px rgba(138, 90, 107, 0.2);
+  --shadow-pixel-hover: 6px 6px 0px rgba(138, 90, 107, 0.3);
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Press+Start+2P&family=VT323&display=swap');
+
+  body {
+    background-color: var(--color-kawaii-pink);
+    color: var(--color-kawaii-text);
+    font-family: var(--font-pixel);
+    -webkit-font-smoothing: none; /* Keep pixels crisp */
+    image-rendering: pixelated;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-pixel);
+    @apply font-bold uppercase tracking-tight;
+  }
+}
+
+@layer components {
+  .pixel-border {
+    @apply border-4 border-kawaii-mauve shadow-pixel bg-kawaii-cream rounded-xl;
+  }
+
+  .pixel-button {
+    @apply px-4 py-2 bg-kawaii-accent text-white border-b-4 border-r-4 border-kawaii-mauve active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1 transition-all duration-75 flex items-center justify-center;
+  }
+
+  .window-frame {
+    @apply bg-kawaii-pink-dark border-4 border-kawaii-mauve shadow-pixel rounded-2xl overflow-hidden;
+  }
+
+  .window-header {
+    @apply bg-kawaii-mauve text-white px-4 py-2 flex items-center justify-between font-tiny-pixel text-[8px];
+  }
+
+  .vinyl-pixel {
+    @apply relative aspect-square rounded-full border-4 border-kawaii-mauve bg-[#1F1F1F];
+    background-image: radial-gradient(circle at center, #2a2a2a 0%, #1f1f1f 70%);
+  }
+  
+  .vinyl-grooves-pixel {
+    @apply absolute inset-0 rounded-full pointer-events-none opacity-20;
+    background: repeating-radial-gradient(
+      circle at center,
+      transparent 0,
+      transparent 4px,
+      rgba(255,255,255,0.1) 5px,
+      transparent 6px
+    );
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #5A3946;
+  border-radius: 10px;
+}
+
